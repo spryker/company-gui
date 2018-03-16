@@ -33,7 +33,7 @@ class CompanyForm extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'customer';
+        return 'company';
     }
 
     /**

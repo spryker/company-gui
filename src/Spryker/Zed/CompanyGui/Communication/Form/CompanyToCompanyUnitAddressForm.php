@@ -7,37 +7,46 @@
 
 namespace Spryker\Zed\CompanyGui\Communication\Form;
 
-use Spryker\Zed\Gui\Communication\Form\Type\SelectType;
+use Spryker\Zed\Gui\Communication\Form\Type\Select2ComboBoxType;
 use Spryker\Zed\Kernel\Communication\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * @deprecated Use {@link \Spryker\Zed\CompanyGui\Communication\Form\CompanyToCompanyUserForm} instead.
- *
  * @method \Spryker\Zed\CompanyGui\Communication\CompanyGuiCommunicationFactory getFactory()
  * @method \Spryker\Zed\CompanyGui\CompanyGuiConfig getConfig()
  */
-class CompanyUserCompanyForm extends AbstractType
+class CompanyToCompanyUnitAddressForm extends AbstractType
 {
     /**
      * @var string
      */
-    protected const FIELD_FK_COMPANY = 'fk_company';
+    protected const OPTION_COMPANY_CHOICES = 'company_choices';
 
     /**
      * @var string
      */
-    protected const TEMPLATE_PATH = '@CompanyGui/CompanyUser/company.twig';
+    protected const FIELD_FK_COMPANY = 'fkCompany';
 
     /**
-     * @uses \Spryker\Zed\CompanyGui\Communication\Controller\SuggestController::indexAction()
+     * @uses \Spryker\Zed\CompanyBusinessUnitGui\Communication\Controller\SuggestController::indexAction()
      *
      * @var string
      */
     protected const ROUTE_SUGGEST = '/company-gui/suggest';
+
+    /**
+     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
+     *
+     * @return void
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setRequired(static::OPTION_COMPANY_CHOICES);
+    }
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -47,10 +56,20 @@ class CompanyUserCompanyForm extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $this->addIdCompanyField($builder, $options);
+        $this->addFkCompanyField($builder, $options);
 
+        $this->addPreSubmitEventListener($builder);
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return void
+     */
+    protected function addPreSubmitEventListener(FormBuilderInterface $builder): void
+    {
         $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $formEvent): void {
-            $this->companySearchPreSubmitHandler($formEvent);
+            $this->handleCompanyBusinessUnitSearchPreSubmit($formEvent);
         });
     }
 
@@ -59,7 +78,7 @@ class CompanyUserCompanyForm extends AbstractType
      *
      * @return void
      */
-    public function companySearchPreSubmitHandler(FormEvent $formEvent): void
+    protected function handleCompanyBusinessUnitSearchPreSubmit(FormEvent $formEvent): void
     {
         $data = $formEvent->getData();
         $form = $formEvent->getForm();
@@ -69,12 +88,12 @@ class CompanyUserCompanyForm extends AbstractType
         }
 
         $companyChoices = $this->getFactory()
-            ->createCompanyUserCompanyFormDataProvider()
-            ->getOptions($data[static::FIELD_FK_COMPANY]);
+            ->createCompanyToCompanyUnitAddressFormDataProvider()
+            ->getCompanyChoices($data[static::FIELD_FK_COMPANY]);
 
         $form->add(
             static::FIELD_FK_COMPANY,
-            SelectType::class,
+            Select2ComboBoxType::class,
             $this->getCompanyFieldParameters($companyChoices),
         );
     }
@@ -85,44 +104,36 @@ class CompanyUserCompanyForm extends AbstractType
      *
      * @return $this
      */
-    protected function addIdCompanyField(FormBuilderInterface $builder, array $options)
+    protected function addFkCompanyField(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
             static::FIELD_FK_COMPANY,
-            SelectType::class,
-            $this->getCompanyFieldParameters($options),
+            Select2ComboBoxType::class,
+            $this->getCompanyFieldParameters($options[static::OPTION_COMPANY_CHOICES]),
         );
 
         return $this;
     }
 
     /**
-     * @param array $companyChoices
+     * @param array<string, int> $companyChoices
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function getCompanyFieldParameters(array $companyChoices = []): array
+    protected function getCompanyFieldParameters(array $companyChoices): array
     {
         return [
             'label' => 'Company',
+            'placeholder' => 'Company',
             'choices' => $companyChoices,
-            'attr' => [
-                'placeholder' => 'Type first two letters of an existing Company for suggestions.',
-                'template_path' => $this->getTemplatePath(),
-            ],
-            'url' => static::ROUTE_SUGGEST,
             'required' => true,
             'constraints' => [
                 new NotBlank(),
             ],
+            'attr' => [
+                'data-minimum-input-length' => 2,
+                'data-autocomplete-url' => static::ROUTE_SUGGEST,
+            ],
         ];
-    }
-
-    /**
-     * @return string
-     */
-    protected function getTemplatePath(): string
-    {
-        return static::TEMPLATE_PATH;
     }
 }

@@ -7,21 +7,19 @@
 
 namespace Spryker\Zed\CompanyGui\Communication\Plugin\CompanyUserGui;
 
-use Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserFormExpanderPluginInterface;
+use Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserAttachCustomerFormExpanderPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * @deprecated Use {@link \Spryker\Zed\CompanyGui\Communication\Plugin\CompanyUserGui\CompanyFieldToCompanyUserFormExpanderPlugin} instead.
- *
  * @method \Spryker\Zed\CompanyGui\Communication\CompanyGuiCommunicationFactory getFactory()
  * @method \Spryker\Zed\CompanyGui\CompanyGuiConfig getConfig()
  */
-class CompanyToCompanyUserFormExpanderPlugin extends AbstractPlugin implements CompanyUserFormExpanderPluginInterface
+class CompanyToCompanyUserAttachCustomerFormExpanderPlugin extends AbstractPlugin implements CompanyUserAttachCustomerFormExpanderPluginInterface
 {
     /**
      * {@inheritDoc}
-     * - Expands Company User form with Company subform.
+     * - Expands `CustomerCompanyAttachForm` with a `fk_company` form field as an input box with AJAX search and suggestions.
      *
      * @api
      *
@@ -31,17 +29,8 @@ class CompanyToCompanyUserFormExpanderPlugin extends AbstractPlugin implements C
      */
     public function expand(FormBuilderInterface $builder): FormBuilderInterface
     {
-        $idCompany = $builder->getData()->getFkCompany();
-        $dataProvider = $this->getFactory()
-            ->createCompanyUserCompanyFormDataProvider();
-
-        $this->getFactory()
-            ->createCompanyUserCompanyForm()
-            ->buildForm(
-                $builder,
-                $dataProvider->getOptions($idCompany),
-            );
-
-        return $builder;
+        return $this->getFactory()
+            ->createCompanyToCustomerCompanyAttachFormExpander()
+            ->expand($builder);
     }
 }

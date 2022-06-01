@@ -9,8 +9,15 @@ namespace Spryker\Zed\CompanyGui\Communication\Form\DataProvider;
 
 use Spryker\Zed\CompanyGui\Dependency\Facade\CompanyGuiToCompanyFacadeInterface;
 
-class CompanyUserCompanyFormDataProvider
+class CompanyToCustomerCompanyAttachFormDataProvider
 {
+    /**
+     * @uses \Spryker\Zed\CompanyGui\Communication\Form\CompanyToCustomerCompanyAttachForm::OPTION_COMPANY_CHOICES
+     *
+     * @var string
+     */
+    protected const OPTION_COMPANY_CHOICES = 'company_choices';
+
     /**
      * @var \Spryker\Zed\CompanyGui\Dependency\Facade\CompanyGuiToCompanyFacadeInterface
      */
@@ -27,9 +34,21 @@ class CompanyUserCompanyFormDataProvider
     /**
      * @param int|null $idCompany
      *
+     * @return array<string, mixed>
+     */
+    public function getOptions(?int $idCompany = null): array
+    {
+        return [
+            static::OPTION_COMPANY_CHOICES => $this->getCompanyChoices($idCompany),
+        ];
+    }
+
+    /**
+     * @param int|null $idCompany
+     *
      * @return array<string, int>
      */
-    public function getOptions(?int $idCompany): array
+    public function getCompanyChoices(?int $idCompany = null): array
     {
         if (!$idCompany) {
             return [];

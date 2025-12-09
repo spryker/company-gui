@@ -294,7 +294,7 @@ class CompanyTable extends AbstractTable
     protected function generateStatusLabels(array $item)
     {
         if ($item[SpyCompanyTableMap::COL_IS_ACTIVE]) {
-            return $this->generateLabel('Active', 'label-info');
+            return $this->generateLabel('Active', 'label-primary');
         }
 
         return $this->generateLabel('Inactive', 'label-danger');
@@ -309,7 +309,7 @@ class CompanyTable extends AbstractTable
     {
         switch ($item[SpyCompanyTableMap::COL_STATUS]) {
             case SpyCompanyTableMap::COL_STATUS_APPROVED:
-                return $this->generateLabel('Approved', 'label-info');
+                return $this->generateLabel('Approved', 'label-success');
             case SpyCompanyTableMap::COL_STATUS_PENDING:
                 return $this->generateLabel('Pending', 'label-warning');
             case SpyCompanyTableMap::COL_STATUS_DENIED:

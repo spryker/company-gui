@@ -54,9 +54,6 @@ use Symfony\Component\Form\FormTypeInterface;
  */
 class CompanyGuiCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Table\CompanyTable
-     */
     public function createCompanyTable(): CompanyTable
     {
         return new CompanyTable(
@@ -65,9 +62,6 @@ class CompanyGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Table\PluginExecutor\CompanyTablePluginExecutorInterface
-     */
     protected function createCompanyPluginExecutor(): CompanyTablePluginExecutorInterface
     {
         return new CompanyTablePluginExecutor(
@@ -89,9 +83,6 @@ class CompanyGuiCommunicationFactory extends AbstractCommunicationFactory
         return $this->getFormFactory()->create(CompanyForm::class, $data, $options);
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyFormDataProvider
-     */
     public function createCompanyFormDataProvider(): CompanyFormDataProvider
     {
         return new CompanyFormDataProvider(
@@ -99,49 +90,31 @@ class CompanyGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Formatter\CompanyGuiFormatterInterface
-     */
     public function createCompanyGuiFormatter(): CompanyGuiFormatterInterface
     {
         return new CompanyGuiFormatter($this->createCompanyNameFormatter());
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyUserCompanyFormDataProvider
-     */
     public function createCompanyUserCompanyFormDataProvider(): CompanyUserCompanyFormDataProvider
     {
         return new CompanyUserCompanyFormDataProvider($this->getCompanyFacade());
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createCompanyUserCompanyForm(): FormTypeInterface
     {
         return new CompanyUserCompanyForm();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyToCompanyUserFormDataProvider
-     */
     public function createCompanyToCompanyUserFormDataProvider(): CompanyToCompanyUserFormDataProvider
     {
         return new CompanyToCompanyUserFormDataProvider($this->getCompanyFacade());
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createCompanyToCompanyUserForm(): FormTypeInterface
     {
         return new CompanyToCompanyUserForm();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\FormExpander\CompanyFieldToCompanyUserFormExpanderInterface
-     */
     public function createCompanyFieldToCompanyUserFormExpander(): CompanyFieldToCompanyUserFormExpanderInterface
     {
         return new CompanyFieldToCompanyUserFormExpander(
@@ -150,25 +123,16 @@ class CompanyGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createCompanyToCompanyBusinessUnitForm(): FormTypeInterface
     {
         return new CompanyToCompanyBusinessUnitForm();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyToCompanyBusinessUnitFormDataProvider
-     */
     public function createCompanyToCompanyBusinessUnitFormDataProvider(): CompanyToCompanyBusinessUnitFormDataProvider
     {
         return new CompanyToCompanyBusinessUnitFormDataProvider($this->getCompanyFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\FormExpander\CompanyToCompanyBusinessUnitFormExpanderInterface
-     */
     public function createCompanyToCompanyBusinessUnitFormExpander(): CompanyToCompanyBusinessUnitFormExpanderInterface
     {
         return new CompanyToCompanyBusinessUnitFormExpander(
@@ -177,25 +141,16 @@ class CompanyGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createCompanyToCompanyUnitAddressForm(): FormTypeInterface
     {
         return new CompanyToCompanyUnitAddressForm();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyToCompanyUnitAddressFormDataProvider
-     */
     public function createCompanyToCompanyUnitAddressFormDataProvider(): CompanyToCompanyUnitAddressFormDataProvider
     {
         return new CompanyToCompanyUnitAddressFormDataProvider($this->getCompanyFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\FormExpander\CompanyToCompanyUnitAddressFormExpanderInterface
-     */
     public function createCompanyToCompanyUnitAddressFormExpander(): CompanyToCompanyUnitAddressFormExpanderInterface
     {
         return new CompanyToCompanyUnitAddressFormExpander(
@@ -204,41 +159,26 @@ class CompanyGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function createActivateCompanyForm(): FormInterface
     {
         return $this->getFormFactory()->create(ActivateCompanyForm::class);
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function createDeativateCompanyForm(): FormInterface
     {
         return $this->getFormFactory()->create(DeactivateCompanyForm::class);
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function createApproveCompanyForm(): FormInterface
     {
         return $this->getFormFactory()->create(ApproveCompanyForm::class);
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function createDenyCompanyForm(): FormInterface
     {
         return $this->getFormFactory()->create(DenyCompanyForm::class);
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\FormExpander\CompanyToCompanyRoleCreateFormExpanderInterface
-     */
     public function createCompanyToCompanyRoleCreateFormExpander(): CompanyToCompanyRoleCreateFormExpanderInterface
     {
         return new CompanyToCompanyRoleCreateFormExpander(
@@ -247,17 +187,11 @@ class CompanyGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createCompanyToCompanyRoleCreateForm(): FormTypeInterface
     {
         return new CompanyToCompanyRoleCreateForm();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyToCompanyRoleCreateFormDataProvider
-     */
     public function createCompanyToCompanyRoleCreateFormDataProvider(): CompanyToCompanyRoleCreateFormDataProvider
     {
         return new CompanyToCompanyRoleCreateFormDataProvider(
@@ -266,25 +200,16 @@ class CompanyGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Formatter\CompanyNameFormatterInterface
-     */
     public function createCompanyNameFormatter(): CompanyNameFormatterInterface
     {
         return new CompanyNameFormatter();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Dependency\Facade\CompanyGuiToCompanyFacadeInterface
-     */
     public function getCompanyFacade(): CompanyGuiToCompanyFacadeInterface
     {
         return $this->getProvidedDependency(CompanyGuiDependencyProvider::FACADE_COMPANY);
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\FormExpander\CompanyToCustomerCompanyAttachFormExpanderInterface
-     */
     public function createCompanyToCustomerCompanyAttachFormExpander(): CompanyToCustomerCompanyAttachFormExpanderInterface
     {
         return new CompanyToCustomerCompanyAttachFormExpander(
@@ -293,25 +218,16 @@ class CompanyGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyToCustomerCompanyAttachFormDataProvider
-     */
     public function createCompanyToCustomerCompanyAttachFormDataProvider(): CompanyToCustomerCompanyAttachFormDataProvider
     {
         return new CompanyToCustomerCompanyAttachFormDataProvider($this->getCompanyFacade());
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createCompanyToCustomerCompanyAttachForm(): FormTypeInterface
     {
         return new CompanyToCustomerCompanyAttachForm();
     }
 
-    /**
-     * @return \Orm\Zed\Company\Persistence\SpyCompanyQuery
-     */
     protected function getPropelCompanyQuery(): SpyCompanyQuery
     {
         return $this->getProvidedDependency(CompanyGuiDependencyProvider::PROPEL_COMPANY_QUERY);

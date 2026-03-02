@@ -23,10 +23,6 @@ class CompanyToCustomerCompanyAttachFormExpander implements CompanyToCustomerCom
      */
     protected $companyToCustomerCompanyAttachFormDataProvider;
 
-    /**
-     * @param \Symfony\Component\Form\FormTypeInterface $companyToCompanyBusinessUnitForm
-     * @param \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyToCustomerCompanyAttachFormDataProvider $companyToCustomerCompanyAttachFormDataProvider
-     */
     public function __construct(
         FormTypeInterface $companyToCompanyBusinessUnitForm,
         CompanyToCustomerCompanyAttachFormDataProvider $companyToCustomerCompanyAttachFormDataProvider
@@ -35,11 +31,6 @@ class CompanyToCustomerCompanyAttachFormExpander implements CompanyToCustomerCom
         $this->companyToCustomerCompanyAttachFormDataProvider = $companyToCustomerCompanyAttachFormDataProvider;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return \Symfony\Component\Form\FormBuilderInterface
-     */
     public function expand(FormBuilderInterface $builder): FormBuilderInterface
     {
         $idCompany = $builder->getData()->getFkCompany();

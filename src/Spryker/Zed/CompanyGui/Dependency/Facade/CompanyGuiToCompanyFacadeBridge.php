@@ -27,51 +27,26 @@ class CompanyGuiToCompanyFacadeBridge implements CompanyGuiToCompanyFacadeInterf
         $this->companyFacade = $companyFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
-     */
     public function update(CompanyTransfer $companyTransfer): CompanyResponseTransfer
     {
         return $this->companyFacade->update($companyTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyTransfer
-     */
     public function getCompanyById(CompanyTransfer $companyTransfer): CompanyTransfer
     {
         return $this->companyFacade->getCompanyById($companyTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
-     */
     public function create(CompanyTransfer $companyTransfer): CompanyResponseTransfer
     {
         return $this->companyFacade->create($companyTransfer);
     }
 
-    /**
-     * @param int $idCompany
-     *
-     * @return \Generated\Shared\Transfer\CompanyTransfer|null
-     */
     public function findCompanyById(int $idCompany): ?CompanyTransfer
     {
         return $this->companyFacade->findCompanyById($idCompany);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyCriteriaFilterTransfer $companyCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer
-     */
     public function getCompanyCollection(CompanyCriteriaFilterTransfer $companyCriteriaFilterTransfer): CompanyCollectionTransfer
     {
         return $this->companyFacade->getCompanyCollection($companyCriteriaFilterTransfer);

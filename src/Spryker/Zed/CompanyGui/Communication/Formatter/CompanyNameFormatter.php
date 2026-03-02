@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\CompanyTransfer;
 
 class CompanyNameFormatter implements CompanyNameFormatterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return string
-     */
     public function formatName(CompanyTransfer $companyTransfer): string
     {
         return sprintf(

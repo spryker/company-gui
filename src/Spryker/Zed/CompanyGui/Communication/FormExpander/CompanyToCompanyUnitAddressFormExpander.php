@@ -23,10 +23,6 @@ class CompanyToCompanyUnitAddressFormExpander implements CompanyToCompanyUnitAdd
      */
     protected $companyToCompanyUnitAddressFormDataProvider;
 
-    /**
-     * @param \Symfony\Component\Form\FormTypeInterface $companyToCompanyUnitAddressForm
-     * @param \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyToCompanyUnitAddressFormDataProvider $companyToCompanyUnitAddressFormDataProvider
-     */
     public function __construct(
         FormTypeInterface $companyToCompanyUnitAddressForm,
         CompanyToCompanyUnitAddressFormDataProvider $companyToCompanyUnitAddressFormDataProvider
@@ -35,11 +31,6 @@ class CompanyToCompanyUnitAddressFormExpander implements CompanyToCompanyUnitAdd
         $this->companyToCompanyUnitAddressFormDataProvider = $companyToCompanyUnitAddressFormDataProvider;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return \Symfony\Component\Form\FormBuilderInterface
-     */
     public function expand(FormBuilderInterface $builder): FormBuilderInterface
     {
         $idCompany = $builder->getData()->getFkCompany();

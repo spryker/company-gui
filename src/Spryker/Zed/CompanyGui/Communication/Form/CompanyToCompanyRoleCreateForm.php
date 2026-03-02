@@ -37,11 +37,6 @@ class CompanyToCompanyRoleCreateForm extends AbstractType
      */
     protected const ROUTE_SUGGEST = '/company-gui/suggest';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(static::OPTION_COMPANY_CHOICES);
@@ -62,11 +57,6 @@ class CompanyToCompanyRoleCreateForm extends AbstractType
         });
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $formEvent
-     *
-     * @return void
-     */
     protected function companySearchPreSubmitHandler(FormEvent $formEvent): void
     {
         $data = $formEvent->getData();

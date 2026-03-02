@@ -29,10 +29,6 @@ class CompanyToCompanyRoleCreateFormDataProvider
      */
     protected $companyNameFormatter;
 
-    /**
-     * @param \Spryker\Zed\CompanyGui\Dependency\Facade\CompanyGuiToCompanyFacadeInterface $companyFacade
-     * @param \Spryker\Zed\CompanyGui\Communication\Formatter\CompanyNameFormatterInterface $companyNameFormatter
-     */
     public function __construct(
         CompanyGuiToCompanyFacadeInterface $companyFacade,
         CompanyNameFormatterInterface $companyNameFormatter

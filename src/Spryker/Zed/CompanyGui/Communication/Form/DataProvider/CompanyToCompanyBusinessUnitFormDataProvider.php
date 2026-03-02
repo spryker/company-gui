@@ -23,9 +23,6 @@ class CompanyToCompanyBusinessUnitFormDataProvider
      */
     protected $companyFacade;
 
-    /**
-     * @param \Spryker\Zed\CompanyGui\Dependency\Facade\CompanyGuiToCompanyFacadeInterface $companyFacade
-     */
     public function __construct(CompanyGuiToCompanyFacadeInterface $companyFacade)
     {
         $this->companyFacade = $companyFacade;

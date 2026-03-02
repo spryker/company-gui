@@ -14,38 +14,13 @@ use Generated\Shared\Transfer\CompanyTransfer;
 
 interface CompanyGuiToCompanyFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
-     */
     public function update(CompanyTransfer $companyTransfer): CompanyResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyTransfer
-     */
     public function getCompanyById(CompanyTransfer $companyTransfer): CompanyTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
-     */
     public function create(CompanyTransfer $companyTransfer): CompanyResponseTransfer;
 
-    /**
-     * @param int $idCompany
-     *
-     * @return \Generated\Shared\Transfer\CompanyTransfer|null
-     */
     public function findCompanyById(int $idCompany): ?CompanyTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyCriteriaFilterTransfer $companyCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer
-     */
     public function getCompanyCollection(CompanyCriteriaFilterTransfer $companyCriteriaFilterTransfer): CompanyCollectionTransfer;
 }

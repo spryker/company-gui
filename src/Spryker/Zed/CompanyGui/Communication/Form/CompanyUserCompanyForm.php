@@ -54,11 +54,6 @@ class CompanyUserCompanyForm extends AbstractType
         });
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $formEvent
-     *
-     * @return void
-     */
     public function companySearchPreSubmitHandler(FormEvent $formEvent): void
     {
         $data = $formEvent->getData();
@@ -96,11 +91,6 @@ class CompanyUserCompanyForm extends AbstractType
         return $this;
     }
 
-    /**
-     * @param array $companyChoices
-     *
-     * @return array
-     */
     protected function getCompanyFieldParameters(array $companyChoices = []): array
     {
         return [
@@ -118,9 +108,6 @@ class CompanyUserCompanyForm extends AbstractType
         ];
     }
 
-    /**
-     * @return string
-     */
     protected function getTemplatePath(): string
     {
         return static::TEMPLATE_PATH;

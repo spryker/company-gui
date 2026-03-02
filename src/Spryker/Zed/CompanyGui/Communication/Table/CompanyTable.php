@@ -73,10 +73,6 @@ class CompanyTable extends AbstractTable
      */
     protected $companyTablePluginsExecutor;
 
-    /**
-     * @param \Orm\Zed\Company\Persistence\SpyCompanyQuery $companyQuery
-     * @param \Spryker\Zed\CompanyGui\Communication\Table\PluginExecutor\CompanyTablePluginExecutorInterface $companyTablePluginsExecutor
-     */
     public function __construct(
         SpyCompanyQuery $companyQuery,
         CompanyTablePluginExecutorInterface $companyTablePluginsExecutor
@@ -116,11 +112,6 @@ class CompanyTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function setHeader(TableConfiguration $config): TableConfiguration
     {
         $baseData = [

@@ -244,9 +244,6 @@ class EditCompanyController extends AbstractController
         return $this->redirectResponse($redirectUrl);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyTransfer
-     */
     protected function createCompanyTransfer(): CompanyTransfer
     {
         return new CompanyTransfer();

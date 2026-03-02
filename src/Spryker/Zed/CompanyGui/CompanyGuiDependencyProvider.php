@@ -52,11 +52,6 @@ class CompanyGuiDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const PLUGINS_COMPANY_FORM_EXPANDER = 'PLUGINS_COMPANY_FORM_EXPANDER';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
@@ -71,11 +66,6 @@ class CompanyGuiDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addPropelCompanyQuery(Container $container): Container
     {
         $container->set(static::PROPEL_COMPANY_QUERY, $container->factory(function () {
@@ -85,11 +75,6 @@ class CompanyGuiDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCompanyFacade(Container $container): Container
     {
         $container->set(static::FACADE_COMPANY, function (Container $container) {
@@ -99,11 +84,6 @@ class CompanyGuiDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCompanyTableConfigExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_COMPANY_TABLE_CONFIG_EXPANDER, function (Container $container) {
@@ -121,11 +101,6 @@ class CompanyGuiDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCompanyTableHeaderExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_COMPANY_TABLE_HEADER_EXPANDER, function (Container $container) {
@@ -143,11 +118,6 @@ class CompanyGuiDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCompanyTableDataExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_COMPANY_TABLE_DATA_EXPANDER, function (Container $container) {
@@ -165,11 +135,6 @@ class CompanyGuiDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCompanyTableActionExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_COMPANY_TABLE_ACTION_EXPANDER, function (Container $container) {
@@ -187,11 +152,6 @@ class CompanyGuiDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCompanyFormPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_COMPANY_FORM_EXPANDER, function (Container $container) {

@@ -23,10 +23,6 @@ class CompanyFieldToCompanyUserFormExpander implements CompanyFieldToCompanyUser
      */
     protected $companyToCompanyUserFormDataProvider;
 
-    /**
-     * @param \Symfony\Component\Form\FormTypeInterface $companyToCompanyUserForm
-     * @param \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyToCompanyUserFormDataProvider $companyToCompanyUserFormDataProvider
-     */
     public function __construct(
         FormTypeInterface $companyToCompanyUserForm,
         CompanyToCompanyUserFormDataProvider $companyToCompanyUserFormDataProvider
@@ -35,11 +31,6 @@ class CompanyFieldToCompanyUserFormExpander implements CompanyFieldToCompanyUser
         $this->companyToCompanyUserFormDataProvider = $companyToCompanyUserFormDataProvider;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return \Symfony\Component\Form\FormBuilderInterface
-     */
     public function expand(FormBuilderInterface $builder): FormBuilderInterface
     {
         $idCompany = $builder->getData()->getFkCompany();

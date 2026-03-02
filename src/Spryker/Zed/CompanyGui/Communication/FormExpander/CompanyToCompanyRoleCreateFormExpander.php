@@ -23,10 +23,6 @@ class CompanyToCompanyRoleCreateFormExpander implements CompanyToCompanyRoleCrea
      */
     protected $companyToCompanyRoleCreateFormDataProvider;
 
-    /**
-     * @param \Symfony\Component\Form\FormTypeInterface $companyToCompanyRoleCreateForm
-     * @param \Spryker\Zed\CompanyGui\Communication\Form\DataProvider\CompanyToCompanyRoleCreateFormDataProvider $companyToCompanyRoleCreateFormDataProvider
-     */
     public function __construct(
         FormTypeInterface $companyToCompanyRoleCreateForm,
         CompanyToCompanyRoleCreateFormDataProvider $companyToCompanyRoleCreateFormDataProvider
@@ -35,11 +31,6 @@ class CompanyToCompanyRoleCreateFormExpander implements CompanyToCompanyRoleCrea
         $this->companyToCompanyRoleCreateFormDataProvider = $companyToCompanyRoleCreateFormDataProvider;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return \Symfony\Component\Form\FormBuilderInterface
-     */
     public function expand(FormBuilderInterface $builder): FormBuilderInterface
     {
         $idCompany = $builder->getData()->getFkCompany();

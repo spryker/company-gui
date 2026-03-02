@@ -26,9 +26,6 @@ class CompanyGuiFormatter implements CompanyGuiFormatterInterface
      */
     protected $companyNameFormatter;
 
-    /**
-     * @param \Spryker\Zed\CompanyGui\Communication\Formatter\CompanyNameFormatterInterface $companyNameFormatter
-     */
     public function __construct(CompanyNameFormatterInterface $companyNameFormatter)
     {
         $this->companyNameFormatter = $companyNameFormatter;

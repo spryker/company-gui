@@ -30,9 +30,6 @@ class CompanyForm extends AbstractType
      */
     protected const FIELD_NAME = 'name';
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'company';

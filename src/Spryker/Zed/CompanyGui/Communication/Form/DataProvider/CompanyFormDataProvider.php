@@ -17,19 +17,11 @@ class CompanyFormDataProvider
      */
     protected $companyFacade;
 
-    /**
-     * @param \Spryker\Zed\CompanyGui\Dependency\Facade\CompanyGuiToCompanyFacadeInterface $companyFacade
-     */
     public function __construct(CompanyGuiToCompanyFacadeInterface $companyFacade)
     {
         $this->companyFacade = $companyFacade;
     }
 
-    /**
-     * @param int|null $idCompany
-     *
-     * @return \Generated\Shared\Transfer\CompanyTransfer
-     */
     public function getData(?int $idCompany = null): CompanyTransfer
     {
         $companyTransfer = new CompanyTransfer();

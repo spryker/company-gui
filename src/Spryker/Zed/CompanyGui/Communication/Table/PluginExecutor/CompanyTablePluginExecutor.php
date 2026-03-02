@@ -64,11 +64,6 @@ class CompanyTablePluginExecutor implements CompanyTablePluginExecutorInterface
         return $buttons;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     public function executeTableConfigExpanderPlugins(TableConfiguration $config): TableConfiguration
     {
         foreach ($this->companyTableConfigExpanderPlugins as $plugin) {
@@ -78,9 +73,6 @@ class CompanyTablePluginExecutor implements CompanyTablePluginExecutorInterface
         return $config;
     }
 
-    /**
-     * @return array
-     */
     public function executeTableHeaderExpanderPlugins(): array
     {
         $expandedData = [];
@@ -91,11 +83,6 @@ class CompanyTablePluginExecutor implements CompanyTablePluginExecutorInterface
         return $expandedData;
     }
 
-    /**
-     * @param array $item
-     *
-     * @return array
-     */
     public function executeTableDataExpanderPlugins(array $item): array
     {
         $expandedData = [];

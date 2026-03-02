@@ -11,10 +11,5 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 interface CompanyToCustomerCompanyAttachFormExpanderInterface
 {
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return \Symfony\Component\Form\FormBuilderInterface
-     */
     public function expand(FormBuilderInterface $builder): FormBuilderInterface;
 }
